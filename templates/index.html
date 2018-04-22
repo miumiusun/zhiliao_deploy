@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+这是首页
+<img src="{% static 'imgs/zhiliao_logo.jpg' %}" alt="">
+<a href="{% url 'add_news' %}">发表新闻</a>
+<table>
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>内容</th>
+            <th>时间</th>
+        </tr>
+    </thead>
+    {% for news in news_list %}
+        <tr>
+            <td>{{ news.title }}</td>
+            <td>{{ news.content }}</td>
+            <td>{{ news.create_time }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
